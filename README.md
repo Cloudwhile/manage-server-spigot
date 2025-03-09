@@ -38,33 +38,3 @@ The plugin configuration file is located at `plugins/ManageServer/config.yml`, w
 2. Place the JAR file in your server's `plugins` folder
 3. Restart the server or load the plugin using a plugin manager
 4. Configure the `config.yml` file (optional)
-
-## Building
-
-If you want to build the plugin yourself:
-
-1. Clone this repository
-2. Use the provided build scripts:
-   - Windows: Run `build.bat` or `build-with-settings.bat`
-3. The built JAR file will be in the `target` folder
-
-## Troubleshooting
-
-### Cannot find plugin 'org.apache.maven.plugins:maven-shade-plugin'
-
-If you encounter this issue, try the following solutions:
-
-1. **Use custom Maven settings**:
-   - Run the `build-with-settings.bat` script, which uses a custom `settings.xml` file with configured mirrors for China
-
-2. **Manually set Maven mirrors**:
-   - Edit your Maven settings file (usually located at `~/.m2/settings.xml`)
-   - Add Aliyun or Huawei Cloud mirrors
-
-3. **Check network connection**:
-   - Verify that your network connection is working properly
-   - If using a proxy, ensure Maven can access the internet through it
-
-4. **Clear Maven cache**:
-   - Delete the cache in the `~/.m2/repository` directory
-   - Run the build command again with the `-U` parameter to force dependency updates
