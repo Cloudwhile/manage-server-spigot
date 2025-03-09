@@ -1,8 +1,7 @@
-package com.example.manageserver.listeners;
+package org.cloudwhile.manageserver.listeners;
 
-import com.example.manageserver.ManageServer;
-import com.example.manageserver.utils.MessageUtils;
-import org.bukkit.Bukkit;
+import org.cloudwhile.manageserver.ManageServer;
+import org.cloudwhile.manageserver.utils.MessageUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;

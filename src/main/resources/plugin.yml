@@ -1,6 +1,6 @@
 name: ManageServer
 version: '${project.version}'
-main: com.example.manageserver.ManageServer
+main: org.cloudwhile.manageserver.ManageServer
 api-version: '1.20'
 authors: [YourName]
 description: ${project.description}

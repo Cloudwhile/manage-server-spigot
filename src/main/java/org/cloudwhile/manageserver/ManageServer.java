@@ -1,9 +1,9 @@
-package com.example.manageserver;
+package org.cloudwhile.manageserver;
 
-import com.example.manageserver.commands.BanCommand;
-import com.example.manageserver.commands.KickCommand;
-import com.example.manageserver.commands.UnbanCommand;
-import com.example.manageserver.listeners.PlayerListener;
+import org.cloudwhile.manageserver.commands.BanCommand;
+import org.cloudwhile.manageserver.commands.KickCommand;
+import org.cloudwhile.manageserver.commands.UnbanCommand;
+import org.cloudwhile.manageserver.listeners.PlayerListener;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 

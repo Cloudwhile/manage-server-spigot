@@ -1,7 +1,7 @@
-package com.example.manageserver.commands;
+package org.cloudwhile.manageserver.commands;
 
-import com.example.manageserver.ManageServer;
-import com.example.manageserver.utils.MessageUtils;
+import org.cloudwhile.manageserver.ManageServer;
+import org.cloudwhile.manageserver.utils.MessageUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

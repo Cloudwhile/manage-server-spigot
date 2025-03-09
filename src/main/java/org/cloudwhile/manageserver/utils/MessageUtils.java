@@ -1,10 +1,9 @@
-package com.example.manageserver.utils;
+package org.cloudwhile.manageserver.utils;
 
-import com.example.manageserver.ManageServer;
+import org.cloudwhile.manageserver.ManageServer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class MessageUtils {
 
