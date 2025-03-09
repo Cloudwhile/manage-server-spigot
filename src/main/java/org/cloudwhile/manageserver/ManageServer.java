@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.Objects;
 
 public class ManageServer extends JavaPlugin {
     
@@ -35,9 +36,9 @@ public class ManageServer extends JavaPlugin {
         getServer().getPluginManager().registerEvents(playerListener, this);
         
         // 注册命令
-        getCommand("ban").setExecutor(new BanCommand(this));
-        getCommand("kick").setExecutor(new KickCommand(this));
-        getCommand("unban").setExecutor(new UnbanCommand(this));
+        Objects.requireNonNull(getCommand("ban")).setExecutor(new BanCommand(this));
+        Objects.requireNonNull(getCommand("kick")).setExecutor(new KickCommand(this));
+        Objects.requireNonNull(getCommand("unban")).setExecutor(new UnbanCommand(this));
         
         getLogger().info("ManageServer 插件已启用!");
     }

@@ -1,16 +1,16 @@
 package org.cloudwhile.manageserver.commands;
 
-import org.cloudwhile.manageserver.listeners.PlayerListener;
-import org.cloudwhile.manageserver.ManageServer;
-import org.cloudwhile.manageserver.utils.MessageUtils;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-
-import java.util.UUID;
+import org.cloudwhile.manageserver.ManageServer;
+import org.cloudwhile.manageserver.listeners.PlayerListener;
+import org.cloudwhile.manageserver.utils.MessageUtils;
 
 public class UnbanCommand implements CommandExecutor {
 
@@ -35,7 +35,8 @@ public class UnbanCommand implements CommandExecutor {
         // 查找被封禁的玩家
         UUID targetUUID = null;
         for (String key : banConfig.getKeys(false)) {
-            if (banConfig.getString(key + ".name", "").equalsIgnoreCase(targetName)) {
+            String name = banConfig.getString(key + ".name");
+            if (name != null && name.equalsIgnoreCase(targetName)) {
                 targetUUID = UUID.fromString(key);
                 break;
             }
@@ -45,13 +46,13 @@ public class UnbanCommand implements CommandExecutor {
         if (targetUUID == null) {
             @SuppressWarnings("deprecation")
             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(targetName);
-            if (offlinePlayer != null && banConfig.contains(offlinePlayer.getUniqueId().toString())) {
+            if (offlinePlayer.hasPlayedBefore() && banConfig.contains(offlinePlayer.getUniqueId().toString())) {
                 targetUUID = offlinePlayer.getUniqueId();
             }
         }
         
         if (targetUUID == null) {
-            MessageUtils.sendMessage(sender, "&c找不到被封禁的玩家: " + targetName);
+            MessageUtils.sendMessage(sender, String.format("&c找不到被封禁的玩家: %s", targetName));
             return true;
         }
 
@@ -61,8 +62,10 @@ public class UnbanCommand implements CommandExecutor {
 
         // 发送解封消息
         String unbanMessage = plugin.getConfig().getString("messages.player-unbanned", "&a玩家 &e%player% &a已被解封");
-        unbanMessage = unbanMessage.replace("%player%", targetName);
-        MessageUtils.broadcast(unbanMessage);
+        if (unbanMessage != null) {
+            unbanMessage = unbanMessage.replace("%player%", targetName);
+            MessageUtils.broadcast(unbanMessage);
+        }
 
         return true;
     }

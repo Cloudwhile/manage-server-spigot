@@ -1,12 +1,12 @@
 package org.cloudwhile.manageserver.commands;
 
-import org.cloudwhile.manageserver.ManageServer;
-import org.cloudwhile.manageserver.utils.MessageUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.cloudwhile.manageserver.ManageServer;
+import org.cloudwhile.manageserver.utils.MessageUtils;
 
 public class KickCommand implements CommandExecutor {
 
@@ -38,7 +38,7 @@ public class KickCommand implements CommandExecutor {
                 reasonBuilder.append(args[i]).append(" ");
             }
         }
-        String reason = reasonBuilder.length() > 0 ? reasonBuilder.toString().trim() : "未指定原因";
+        String reason = !reasonBuilder.isEmpty() ? reasonBuilder.toString().trim() : "未指定原因";
 
         // 踢出玩家
         String kickMessage = plugin.getConfig().getString("messages.kick-message", "&c你已被服务器踢出!");
