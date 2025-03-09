@@ -1,0 +1,29 @@
+name: ManageServer
+version: '${project.version}'
+main: com.example.manageserver.ManageServer
+api-version: '1.20'
+authors: [YourName]
+description: ${project.description}
+commands:
+  ban:
+    description: 封禁玩家
+    usage: /ban <玩家名> [原因]
+    permission: manageserver.ban
+  kick:
+    description: 踢出玩家
+    usage: /kick <玩家名> [原因]
+    permission: manageserver.kick
+  unban:
+    description: 解封玩家
+    usage: /unban <玩家名>
+    permission: manageserver.unban
+permissions:
+  manageserver.ban:
+    description: 允许封禁玩家
+    default: op
+  manageserver.kick:
+    description: 允许踢出玩家
+    default: op
+  manageserver.unban:
+    description: 允许解封玩家
+    default: op 

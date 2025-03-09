@@ -1,0 +1,20 @@
+# ManageServer 配置文件
+
+# 消息配置
+messages:
+  prefix: "&7[&6ManageServer&7] "
+  player-join: "&e%player% &a加入了服务器"
+  player-quit: "&e%player% &c离开了服务器"
+  player-first-join: "&e欢迎 &b%player% &e首次加入服务器!"
+  player-banned: "&c玩家 &e%player% &c已被封禁，原因: &e%reason%"
+  player-unbanned: "&a玩家 &e%player% &a已被解封"
+  player-kicked: "&c玩家 &e%player% &c已被踢出，原因: &e%reason%"
+  ban-message: "&c你已被服务器封禁!\n&c原因: &e%reason%\n&c如有异议，请联系管理员"
+  kick-message: "&c你已被服务器踢出!\n&c原因: &e%reason%"
+  
+# 功能设置
+features:
+  welcome-message: true
+  quit-message: true
+  broadcast-ban: true
+  broadcast-kick: true 
