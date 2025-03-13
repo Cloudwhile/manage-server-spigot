@@ -11,16 +11,19 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.cloudwhile.manageserver.ManageServer;
 import org.cloudwhile.manageserver.listeners.PlayerListener;
+import org.cloudwhile.manageserver.onebot.OneBotManager;
 import org.cloudwhile.manageserver.utils.MessageUtils;
 
 public class BanCommand implements CommandExecutor {
 
     private final ManageServer plugin;
     private final PlayerListener playerListener;
+    private final OneBotManager oneBotManager;
 
-    public BanCommand(ManageServer plugin) {
+    public BanCommand(ManageServer plugin, PlayerListener playerListener, OneBotManager oneBotManager) {
         this.plugin = plugin;
-        this.playerListener = plugin.getPlayerListener();
+        this.playerListener = playerListener;
+        this.oneBotManager = oneBotManager;
     }
 
     @Override
@@ -90,6 +93,11 @@ public class BanCommand implements CommandExecutor {
             }
         } else {
             MessageUtils.sendMessage(sender, String.format("&a已封禁玩家 &e%s &a，原因: &e%s", targetName, reason));
+        }
+        
+        // 发送消息到QQ
+        if (oneBotManager != null && oneBotManager.isEnabled()) {
+            oneBotManager.sendPlayerBannedMessage(targetName, reason, sender.getName());
         }
 
         return true;

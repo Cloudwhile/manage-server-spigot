@@ -17,4 +17,41 @@ features:
   welcome-message: true
   quit-message: true
   broadcast-ban: true
-  broadcast-kick: true 
+  broadcast-kick: true
+
+# OneBot配置
+onebot:
+  # 是否启用OneBot功能
+  enabled: false
+  # 连接方式: http 或 websocket
+  connection-type: websocket
+  # HTTP连接配置 (当connection-type为http时使用)
+  http:
+    url: "http://127.0.0.1:5700"
+    access-token: ""
+  # WebSocket连接配置 (当connection-type为websocket时使用)
+  websocket:
+    url: "ws://127.0.0.1:6700"
+    access-token: ""
+  # 消息转发配置
+  forward:
+    # 服务器消息转发到QQ群
+    server-to-qq: true
+    # QQ消息转发到服务器
+    qq-to-server: true
+    # 玩家加入/退出消息转发到QQ
+    player-join-quit: true
+    # 封禁/踢出消息转发到QQ
+    ban-kick: true
+  # QQ群配置
+  groups:
+    # 主群ID
+    main-group: 123456789
+    # 管理群ID (可选)
+    admin-group: 987654321
+  # QQ用户与Minecraft玩家绑定
+  bindings:
+    # 格式: QQ号: 玩家名
+    123456789: "ExamplePlayer"
+  # 命令前缀 (用于在QQ中执行Minecraft命令)
+  command-prefix: "!" 

@@ -10,16 +10,19 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.cloudwhile.manageserver.ManageServer;
 import org.cloudwhile.manageserver.listeners.PlayerListener;
+import org.cloudwhile.manageserver.onebot.OneBotManager;
 import org.cloudwhile.manageserver.utils.MessageUtils;
 
 public class UnbanCommand implements CommandExecutor {
 
     private final ManageServer plugin;
     private final PlayerListener playerListener;
+    private final OneBotManager oneBotManager;
 
-    public UnbanCommand(ManageServer plugin) {
+    public UnbanCommand(ManageServer plugin, PlayerListener playerListener, OneBotManager oneBotManager) {
         this.plugin = plugin;
-        this.playerListener = plugin.getPlayerListener();
+        this.playerListener = playerListener;
+        this.oneBotManager = oneBotManager;
     }
 
     @Override
@@ -65,6 +68,11 @@ public class UnbanCommand implements CommandExecutor {
         if (unbanMessage != null) {
             unbanMessage = unbanMessage.replace("%player%", targetName);
             MessageUtils.broadcast(unbanMessage);
+        }
+        
+        // 发送消息到QQ
+        if (oneBotManager != null && oneBotManager.isEnabled()) {
+            oneBotManager.sendPlayerUnbannedMessage(targetName, sender.getName());
         }
 
         return true;
